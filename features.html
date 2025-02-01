@@ -174,16 +174,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // select all feature cards in the cards-container
             const featureCards = document.querySelectorAll('.cards-container .feature-card'),
-                baseDelay = 200;
+                baseDelay = 200,
+                observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // iterate over each card and set an animation delay based on its index
+                            featureCards.forEach((card, index) => {
+                                const delay = (index * 50) + baseDelay; // calculate delay
+                                card.style.animationDelay = `${delay}ms`;
+                                card.classList.add('active');
+                            });
+                            observer.unobserve(document.querySelector('#features-section'));
+                        }
+                    });
+                }, { threshold: 0.1 });
 
-            // iterate over each card and set an animation delay based on its index
-            featureCards.forEach((card, index) => {
-                const delay = (index * 50) + baseDelay; // calculate delay
-                card.style.animationDelay = `${delay}ms`;
-                card.classList.add('active');
-            });
+            observer.observe(document.querySelector('#features-section'));
         });
     </script>
 </body>
