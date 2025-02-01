@@ -1,0 +1,55 @@
+/* reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ff416c;
+    --secondary: #ff4b2b;
+    --background: #121212;
+    --text-color: #fff;
+    --text-hover: #ffb6c7;
+    --nav-bg: #2c2c2c;
+    --panel-bg: #1e1e1e;
+    --header-bg: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* header styling */
+header {
+    background: var(--header-bg);
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    transform: scale(1.1);
+    color: var(--text-hover);
+}

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ION Workout App - Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/docs.css">
+    <link rel="stylesheet" href="/css/codeblocks.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <script src="/js/highlight.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/features.html">features</a></li>
+                <li><a href="/docs.html">docs</a></li>
+                <li><a href="https://github.com/ION-WorkoutApp" target="_blank">github</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- hero section -->
+        <section id="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>ION Workout App Documentation</h1>
+                <p>Your guide to all repositories and features</p>
+            </div>
+        </section>
+
+        <!-- tabbed interface for repository readmes -->
+        <section id="repo-docs">
+            <div class="tabs">
+                <ul class="tab-list">
+                    <li class="active" data-tab="app">app (front‑end)</li>
+                    <li data-tab="server">server (back‑end)</li>
+                    <li data-tab="installers">installers</li>
+                    <li data-tab="data">data</li>
+                </ul>
+                <div class="tab-content">
+                    <!-- app (front‑end) tab -->
+                    <div id="tab-app" class="tab-panel active">
+                        <h2>app (front‑end) 💪</h2>
+
+                        <section>
+                            <h3>overview 🏋️‍♀️</h3>
+                            <p>
+                                ion workout app is a self‑hosted workout application built with kotlin that delivers an
+                                engaging, intuitive interface for managing your fitness journey. 🚀
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>features ✨</h3>
+                            <ul>
+                                <li>intuitive user interface</li>
+                                <li>workout tracking & logging</li>
+                                <li>scheduling & reminders</li>
+                                <li>progress analytics</li>
+                                <li>customizable routines</li>
+                                <li>offline functionality</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3>installation 🛠️</h3>
+                            <p>
+                                prerequisites: android studio, kotlin (configured within android studio), and a physical
+                                android device or an emulator.
+                            </p>
+                            <ol>
+                                <li>clone the repository:
+                                    <pre><code class="bash-block block">git clone https://github.com/ION-WorkoutApp/app.git</code></pre>
+                                </li>
+                                <li>open the project in android studio</li>
+                                <li>build & run the app</li>
+                            </ol>
+                        </section>
+
+                        <section>
+                            <h3>usage 📖</h3>
+                            <p>
+                                once installed, the app lets you log workouts, schedule sessions, review progress, and
+                                customize routines through a sleek interface. refer to the in‑app documentation or
+                                online docs for detailed instructions.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>contributing & code of conduct 🤝📜</h3>
+                            <p>
+                                contributions are welcome! please review our contributing guidelines and code of conduct
+                                before contributing to ensure a respectful community.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>license & contact ⚖️📬</h3>
+                            <p>
+                                licensed under the mit license. for more details, check the license file. for any
+                                questions or feedback, visit our <a href="https://github.com/ION-WorkoutApp/app"
+                                    target="_blank" style="color: #ff416c; text-decoration: underline;">repository</a>
+                                or email <a href="mailto:workout@ion606.com">workout@ion606.com</a>.
+                            </p>
+                        </section>
+                    </div>
+
+                    <!-- server (back‑end) tab -->
+                    <div id="tab-server" class="tab-panel">
+                        <h2>server (back‑end) 🖥️</h2>
+
+                        <section>
+                            <h3>before you read 📖</h3>
+                            <p>
+                                make sure you wouldn't rather use one of the <a
+                                    href="https://github.com/ION-WorkoutApp/installers?tab=readme-ov-file#ion-workout-app-installers"
+                                    target="_blank" style="color: #ff416c; text-decoration: underline;">installers</a>.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>setup ⚙️</h3>
+                            <p>
+                                <em>note: the default <code>run</code> command will attempt to run a cloudflared tunnel
+                                    to forward the server. make sure this is set up first if you want this
+                                    functionality.</em>
+                            </p>
+                            <ol>
+                                <li>clone this repo</li>
+                                <li>create the env file (see the <strong>environment</strong> section below)</li>
+                                <li>run the following
+                                    <pre><code class="block make-block">make run
+make fixPermissions
+make restart</code></pre>
+                                </li>
+                            </ol>
+                            <p>
+                                <em>why <code>make fixPermissions</code>? because mongodb does funny things with
+                                    permissions and then can't read its own data directory.</em>
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>environment 🛠️</h3>
+                            <p>
+                                create an env file in the base directory called <code>.env</code> with the following
+                                structure:
+                            </p>
+                            <pre><code class="block env-block">PORT=1221
+SECRET_KEY=yourSecret
+MONGO_URI=mongodb://yourUser:yourPassword@mongodb:27017/userDatabase?authSource=admin
+MONGO_INITDB_ROOT_USERNAME=yourUser
+MONGO_INITDB_ROOT_PASSWORD=yourPassword
+MONGO_DATABASE=maindb
+EMAIL_USER=example@example.com
+EMAIL_PASS=mysupersecurepassword1
+EMAIL_SENDER=donotreply@example.com
+EMAIL_SMTP_HOST=smtp.example.com
+EMAIL_SMTP_PORT=465
+DEBUGGING=true</code></pre>
+                        </section>
+
+                        <section>
+                            <h3>reset the database 🔄</h3>
+                            <p>
+                                just run <code class="language-bash bash-block">make resetLocal</code>
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>credits 🙏</h3>
+                            <p>
+                                i couldn't get the default function to work for some reason, but credit to the blocked
+                                email list goes to <a href="https://github.com/IntegerAlex/disposable-email-detector"
+                                    target="_blank"
+                                    style="color: #ff416c; text-decoration: underline;">disposable-email-detector</a>,
+                                awesome tool!
+                            </p>
+                        </section>
+                    </div>
+
+                    <!-- installers tab -->
+                    <div id="tab-installers" class="tab-panel">
+                        <h2>installers 🛠️</h2>
+
+                        <section>
+                            <h3>overview</h3>
+                            <p>
+                                welcome to the <strong>ion workout app</strong> installers repository! this project
+                                provides two convenient ways to set up the ion workout app server:
+                            </p>
+                            <ul>
+                                <li><strong>cli installer</strong> 🔄: a command-line interface script for advanced
+                                    users.</li>
+                                <li><strong>gui installer</strong> 🔧: a graphical interface with a friendly setup
+                                    wizard.</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3>features 🌐</h3>
+                            <ul>
+                                <li><strong>environment setup</strong>: automatically configures environment variables
+                                    in a <code>.env</code> file.</li>
+                                <li><strong>mongodb integration</strong>: supports username, password, and database
+                                    setup.</li>
+                                <li><strong>docker image management</strong>: pulls necessary docker images.</li>
+                                <li><strong>custom credentials</strong>: optionally auto-generate secure passwords and
+                                    keys.</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3>prerequisites ⚙️</h3>
+                            <p>ensure the following software is installed:</p>
+                            <ul>
+                                <li>git</li>
+                                <li>docker & docker compose</li>
+                                <li>python 3.x</li>
+                                <li>cloudflared (optional)</li>
+                            </ul>
+                            <p>for the gui installer, the python dependencies will be installed automatically.</p>
+                        </section>
+
+                        <section>
+                            <h3>cli installer 🔄</h3>
+                            <p>
+                                the cli installer is a bash script that guides you through the setup process via
+                                terminal prompts.
+                            </p>
+                            <h4>one‑line command to install and run</h4>
+                            <pre><code class="bash-block block">bash &lt;(curl -s https://raw.githubusercontent.com/ION-WorkoutApp/installers/main/setup.sh)</code></pre>
+                            <h4>what it does</h4>
+                            <ol>
+                                <li>fetches the installer script from the repository.</li>
+                                <li>executes it directly in your terminal.</li>
+                            </ol>
+                        </section>
+
+                        <section>
+                            <h3>gui installer 🔧</h3>
+                            <p>
+                                the gui installer provides a user‑friendly interface for setting up the ion workout app
+                                server.
+                            </p>
+                            <p>
+                                simply download and run <a href="GUI/dist/server_setup" target="_blank"
+                                    style="color: #ff416c; text-decoration: underline;">the setup file</a>.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>development ⚖️</h3>
+                            <p>building the gui installer:</p>
+                            <ol>
+                                <li>
+                                    <strong>clone the repository</strong>:
+                                    <pre><code class="bash-block block">git clone https://github.com/ION-WorkoutApp/installers.git
+cd installers</code></pre>
+                                </li>
+                                <li>
+                                    <strong>create and activate a virtual environment</strong>:
+                                    <pre><code class="bash-block block">python3 -m venv venv
+source venv/bin/activate  # for linux/macos
+venv\Scripts\activate     # for windows</code></pre>
+                                </li>
+                                <li>
+                                    <strong>install dependencies</strong>:
+                                    <pre><code class="bash-block block">pip install -r GUI/requirements.txt</code></pre>
+                                </li>
+                                <li>
+                                    <strong>build the executable</strong>:
+                                    <pre><code class="bash-block block">pyinstaller --onefile --noconsole server_setup.py</code></pre>
+                                    the executable will be created in the <code>dist</code> folder.
+                                </li>
+                                <li>
+                                    <strong>deactivate the virtual environment</strong> (optional):
+                                    <pre><code class="bash-block block">deactivate</code></pre>
+                                </li>
+                            </ol>
+                        </section>
+
+                        <section>
+                            <h3>troubleshooting 🚫</h3>
+                            <ul>
+                                <li>
+                                    <strong>docker not found</strong>: ensure docker is installed and running; verify
+                                    docker compose compatibility.
+                                </li>
+                                <li>
+                                    <strong>python errors</strong>: ensure python 3.x is installed.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3>contributing ✨</h3>
+                            <p>
+                                contributions are welcome! feel free to submit issues or pull requests.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>license 🔒</h3>
+                            <p>
+                                this project is licensed under the mit license.
+                            </p>
+                        </section>
+                    </div>
+
+                    <!-- data tab -->
+                    <div id="tab-data" class="tab-panel">
+                        <h2>data contribution guidelines 📊</h2>
+
+                        <section>
+                            <h3>guidelines</h3>
+                            <p>
+                                we welcome contributions to our comprehensive exercise dataset. please follow these
+                                guidelines to help maintain consistency and quality:
+                            </p>
+                            <ol>
+                                <li><strong>formatting:</strong> submit your data in json or csv format with clearly
+                                    defined fields.</li>
+                                <li><strong>consistency:</strong> ensure that exercise names, categories, and
+                                    descriptions follow the existing standards.</li>
+                                <li><strong>validation:</strong> verify that your data is free of duplicates and errors
+                                    by using a json validator or csv linter before submission.</li>
+                                <li><strong>documentation:</strong> include a readme file with your submission
+                                    explaining data sources and any transformations performed.</li>
+                                <li><strong>licensing:</strong> all contributions must be compatible with the mit
+                                    license used by the project.</li>
+                            </ol>
+                            <p>
+                                if you have any questions, please open an issue on our github repository.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h3>repository links</h3>
+                            <p>
+                                check out the following repositories for more details:
+                            </p>
+                            <ul>
+                                <li>
+                                    <a href="https://github.com/ION-WorkoutApp/data" target="_blank"
+                                        style="color: #ff416c; text-decoration: underline;">ion workout exercise app
+                                        data repository</a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/ION-WorkoutApp/db-images" target="_blank"
+                                        style="color: #ff416c; text-decoration: underline;">ion workout app image dats
+                                        repository</a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 ION Workout App. all rights reserved.</p>
+    </footer>
+    <script>
+        // simple tab switcher script
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-list li'),
+                panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // remove active class from all tabs and panels
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+                    // add active class to clicked tab and corresponding panel
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById('tab-' + tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

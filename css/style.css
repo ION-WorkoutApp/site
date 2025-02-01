@@ -1,0 +1,255 @@
+/* reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* hero section styling with dynamic background */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+    animation: fadeIn 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 2s ease-out forwards;
+    opacity: 0;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.btn {
+    background-color: #ff9800;
+    color: #121212;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e68900;
+    transform: scale(1.05);
+}
+
+/* keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* features section styling */
+#features {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #1e1e1e;
+}
+
+.feature {
+    background: #2c2c2c;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 1rem;
+    width: 300px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    cursor: pointer;
+}
+
+.feature:hover {
+    animation: pop 0.6s ease-in;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+}
+
+.feature p {
+    font-size: 1rem;
+}
+
+/* gallery section styling */
+#gallery {
+    padding: 4rem 2rem;
+    background-color: #1e1e1e;
+    text-align: center;
+}
+
+#gallery .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+/* use a grid layout with an increased minimum width so the cards are larger */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+/* each card maintains a consistent aspect ratio for its image */
+.image-card {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #2c2c2c;
+    opacity: 0;
+    /* default transform for slide-left; slide-right is set separately */
+    transform: translateX(-100px) scale(1);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.image-card.slide-right {
+    transform: translateX(100px) scale(1);
+}
+
+/* ensure the image fills the card’s area */
+.image-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* text overlay goes at the bottom */
+.image-card .card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.image-card:hover img {
+    transform: scale(1.05);
+}
+
+.image-card:hover .card-content {
+    transform: translateY(0);
+}
+
+/* once in the viewport, slide in and become fully visible */
+.image-card.visible {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+/* on hover, make the card scale up and enhance the shadow (only when visible) */
+.image-card.visible:hover {
+    transform: translateX(0) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* footer styling */
+footer {
+    background-color: #121212;
+    color: #888;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* keyframe animations */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* responsive adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+}

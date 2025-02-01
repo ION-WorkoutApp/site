@@ -1,0 +1,240 @@
+/* hero section styling */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 4rem;
+    /* to account for fixed header */
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://picsum.photos/1600/900?random=10');
+    background-size: cover;
+    background-position: center;
+    animation: zoomIn 12s ease infinite alternate;
+    filter: brightness(0.65);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* features section styling */
+#features-section {
+    padding: 4rem 2rem;
+    background: #1e1e1e;
+    text-align: center;
+}
+
+#features-section .section-title {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+
+.feature-card {
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+
+/* updated feature-card styling with ripple effect */
+.feature-card.active {
+    background: #2c2c2c;
+    padding: 2rem;
+    border-radius: 12px;
+    /* remove duplicate box-shadow properties */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0; /* initial state */
+    transform: scale(0.8); /* initial smaller scale */
+    animation: rippleIn 0.8s forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* new rippleIn keyframes for pop in ripple effect */
+@keyframes rippleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes pop {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.2);
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* github call-to-action section */
+#github-cta {
+    padding: 4rem 2rem;
+    background: #121212;
+    text-align: center;
+}
+
+#github-cta h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    animation: slideIn 1s ease-out;
+}
+
+#github-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: #fff;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+footer {
+    background: #1e1e1e;
+    text-align: center;
+    padding: 1rem;
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+}
