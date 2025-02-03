@@ -4,197 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ION Workout App - Coming Soon!">
-    <title>ION Workout App - Coming Soon</title>
-    <style>
-        /* reset default styles */
-        body,
-        h1,
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0 20px;
-            box-sizing: border-box;
-            transition: background-color 0.5s, color 0.5s;
-        }
-
-        /* dark theme styles */
-        body.dark {
-            background: linear-gradient(120deg, #1A1A1D, #121212);
-            color: #f0f0f0;
-        }
-
-        /* light theme styles */
-        body.light {
-            background: linear-gradient(120deg, #f5f5f5, #e0e0e0);
-            color: #333;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            transition: color 0.5s;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            transition: color 0.5s;
-        }
-
-        .email-form {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .email-input {
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 300px;
-            transition: background-color 0.5s, color 0.5s, border-color 0.5s;
-        }
-
-        body.dark .email-input {
-            background-color: #2B2B2B;
-            color: #f0f0f0;
-            border-color: #444;
-        }
-
-        body.light .email-input {
-            background-color: #fff;
-            color: #333;
-            border-color: #ccc;
-        }
-
-        .notify-btn {
-            padding: 10px 20px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.5s, color 0.5s;
-        }
-
-        body.dark .notify-btn {
-            background-color: #00D1FF;
-            color: #121212;
-        }
-
-        body.light .notify-btn {
-            background-color: #0078FF;
-            color: #fff;
-        }
-
-        .notify-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .social-links {
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            text-decoration: none;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: transform 0.3s, color 0.3s;
-        }
-
-        body.dark .social-links a {
-            color: #00D1FF;
-        }
-
-        body.light .social-links a {
-            color: #0078FF;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        footer {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            transition: color 0.5s;
-        }
-
-        body.dark footer {
-            color: #666;
-        }
-
-        body.light footer {
-            color: #333;
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            padding: 0;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s, transform 0.3s, color 0.3s;
-            transform: rotate(-25deg);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        body.dark .theme-toggle {
-            background-color: #444;
-            color: #f0f0f0;
-        }
-
-        body.light .theme-toggle {
-            background-color: #ccc;
-            color: #333;
-        }
-
-        .theme-toggle:hover {
-            transform: rotate(20deg);
-        }
-
-        a[aria-label="GitHub"] svg,
-        a[aria-label="GitHub"] img {
-            transition: transform 0.3s;
-        }
-
-        a[aria-label="GitHub"]:hover svg,
-        a[aria-label="GitHub"]:hover img {
-            transform: scale(1.2);
-        }
-    </style>
+    <meta name="description" content="ion workout app - coming soon!">
+    <title>ion workout app - coming soon</title>
+    <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body class="dark">
-    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <h1>ION Workout App</h1>
-    <p>Your personalized fitness companion. Launching soon!</p>
+    <button class="theme-toggle" aria-label="toggle theme">🌙</button>
+    <h1>ion workout app</h1>
+    <p>your personalized fitness companion. launching soon!</p>
 
-    <!-- <form class="email-form">
-        <input type="email" class="email-input" placeholder="Enter your email to stay updated" required>
-        <button type="submit" class="notify-btn">Notify Me</button>
-    </form> -->
+    <!-- email collection form -->
+    <form id="email-form" class="email-form" action="https://formspree.io/f/mgvoyqov" method="POST">
+        <input type="email" class="email-input" name="email" placeholder="enter your email to stay updated" required;>
+        <button type="submit" class="notify-btn">notify me</button>
+    </form>
+
+    <!-- popup for success message -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <p>thank you! your email was submitted successfully.</p>
+            <button id="popup-close" class="popup-close">close</button>
+        </div>
+    </div>
 
     <div class="social-links">
         <a href="https://github.com/ION-WorkoutApp" target="_blank" aria-label="GitHub">
@@ -206,14 +38,15 @@
     </div>
 
     <footer>
-        &copy; 2025 ION Workout App. All rights reserved.
+        &copy; 2025 ion workout app. all rights reserved.
     </footer>
 
     <script>
-        const toggleButton = document.querySelector('.theme-toggle');
-        const body = document.body;
+        // theme toggle script
+        const toggleButton = document.querySelector('.theme-toggle'),
+            body = document.body;
 
-        // load theme preference from localStorage
+        // load theme preference from localstorage
         const savedTheme = localStorage.getItem('theme') || 'dark';
         body.classList.add(savedTheme);
         toggleButton.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
@@ -226,6 +59,9 @@
             localStorage.setItem('theme', theme);
         });
     </script>
+
+    <!-- email handler module script -->
+    <script type="module" src="email-handler.js"></script>
 </body>
 
 </html>
