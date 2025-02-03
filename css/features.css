@@ -1,3 +1,10 @@
+/* new class to hide technical features by default */
+.hidden {
+    display: none;
+}
+
+/* existing css continues below */
+
 /* hero section styling */
 #hero {
     position: relative;
@@ -110,8 +117,8 @@
 
 .feature-card {
     transform: scale(1);
-    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
-                box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
@@ -119,20 +126,19 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-
 /* updated feature-card styling with ripple effect */
 .feature-card.active {
     background: #2c2c2c;
     padding: 2rem;
     border-radius: 12px;
-    /* remove duplicate box-shadow properties */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    opacity: 0; /* initial state */
-    transform: scale(0.8); /* initial smaller scale */
+    opacity: 0;
+    /* initial state */
+    transform: scale(0.8);
+    /* initial smaller scale */
     animation: rippleIn 0.8s forwards;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 /* new rippleIn keyframes for pop in ripple effect */
 @keyframes rippleIn {
@@ -140,32 +146,34 @@
         opacity: 0;
         transform: scale(0.8);
     }
+
     50% {
         opacity: 1;
         transform: scale(1.15);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);
     }
 }
-
 
 @keyframes pop {
     0% {
         opacity: 1;
         transform: scale(1);
     }
+
     50% {
         opacity: 1;
         transform: scale(1.05);
     }
+
     100% {
         opacity: 1;
         transform: scale(1.1);
     }
 }
-
 
 .feature-icon {
     font-size: 3rem;
@@ -218,6 +226,25 @@
 }
 
 .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+#toggle-features {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: #fff;
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    margin: 1rem 0;
+}
+
+#toggle-features:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
