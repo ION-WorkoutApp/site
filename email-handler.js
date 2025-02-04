@@ -12,6 +12,7 @@ form.addEventListener('submit', async (event) => {
     if (localStorage.getItem('email-aquired')) return;
 
     const email = emailInput.value;
+    if (!email?.length) return
 
     try {
         const response = await fetch(form.action, {
