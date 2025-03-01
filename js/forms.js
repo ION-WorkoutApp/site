@@ -24,7 +24,7 @@ const loadScript = (src) => {
 
     // customize formbutton
     formbutton("create", {
-        action: "https://formspree.io/f/mgvoyqov",
+        action: "mailpocket.ion606.com", //"https://formspree.io/f/mgvoyqov",
         title: "Join our mailing list!",
         closeButton: {
             display: "none"
